@@ -36,7 +36,8 @@
 - **Kubernetes**: Production-ready orchestration
 - **Monitoring**: Prometheus metrics & health checks
 - **Security**: Anti-spoofing & encryption
-```
+
+```mermaid
 graph TB
     A[Client Applications] --> B[API Gateway]
     B --> C[Authentication Service]
@@ -52,6 +53,7 @@ graph TB
     style E fill:#f3e5f5
     style H fill:#e8f5e8
 ```
+
 ## 🚀 Quick Start
 
 ### Prerequisites
