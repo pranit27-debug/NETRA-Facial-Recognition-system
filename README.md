@@ -92,7 +92,7 @@ python app/main.py
 # http://localhost:8000/docs
 ```
 🎨 High-Level Design
-System Architecture Overview
+# System Architecture Overview
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                             CLIENT LAYER                                    │
@@ -142,7 +142,7 @@ System Architecture Overview
 │  └─────────────────┘    └─────────────────┘    └─────────────────┘         │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
-Data Flow Diagram
+# Data Flow Diagram
 ```
 ┌─────────────┐    Face Images    ┌─────────────┐    Preprocessed    ┌─────────────┐
 │   Input     │ ────────────────► │ Preprocess  │ ────────────────► │  Siamese    │
@@ -166,7 +166,7 @@ Data Flow Diagram
 │             │                   │   Distance  │                   │   Score     │
 └─────────────┘                   └─────────────┘                   └─────────────┘
 ```
-Neural Network Architecture
+# Neural Network Architecture
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                          Siamese Neural Network                            │
@@ -207,7 +207,7 @@ Neural Network Architecture
 │               └─────────────┘                                              │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
-Training Pipeline Architecture
+# Training Pipeline Architecture
 ```
 ┌─────────────┐    Raw Images    ┌─────────────┐    Augmented     ┌─────────────┐
 │ Training    │ ────────────────► │ Data       │ ────────────────► │ Model      │
