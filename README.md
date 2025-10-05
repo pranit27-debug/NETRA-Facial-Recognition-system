@@ -49,9 +49,6 @@ graph TB
     G --> H
     H --> I[Response Handler]
     
-    style D fill:#e1f5fe
-    style E fill:#f3e5f5
-    style H fill:#e8f5e8
 ```
 
 ## 🚀 Quick Start
