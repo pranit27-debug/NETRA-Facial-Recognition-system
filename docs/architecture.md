@@ -142,7 +142,7 @@ Model Storage → Serialization (Pickle)
 
 ## Deployment Architecture
 
-### Docker Container
+### Docker Container(contanirazation)
 ```
 ┌─────────────────────────────────────┐
 │         Docker Container             │
