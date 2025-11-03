@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  netra-api:
+    build: .
+    container_name: netra-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./configs:/app/configs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CONFIG_PATH=configs/config.yaml
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - netra-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: netra-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - netra-network
+    depends_on:
+      - netra-api
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: netra-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana-dashboard.json:/etc/grafana/provisioning/dashboards/netra.json
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - netra-network
+    depends_on:
+      - prometheus
+
+volumes:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  netra-network:
+    driver: bridge

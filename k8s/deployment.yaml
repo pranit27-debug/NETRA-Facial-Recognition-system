@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netra-deployment
+  labels:
+    app: netra
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: netra
+  template:
+    metadata:
+      labels:
+        app: netra
+        version: v1
+    spec:
+      containers:
+      - name: netra-api
+        image: netra-facial-recognition:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: CONFIG_PATH
+          value: "configs/config.yaml"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8000
+          initialDelaySeconds: 20
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        volumeMounts:
+        - name: model-storage
+          mountPath: /app/models
+        - name: config-volume
+          mountPath: /app/configs
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: netra-model-pvc
+      - name: config-volume
+        configMap:
+          name: netra-config
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: netra-model-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard

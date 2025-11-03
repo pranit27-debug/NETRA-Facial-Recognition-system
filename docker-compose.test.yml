@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: pytest tests/ -v
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=testing
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"

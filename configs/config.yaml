@@ -1,0 +1,43 @@
+# NETRA Configuration File
+
+app:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: true
+  debug: false
+
+model:
+  path: "models/siamese.pth"
+  embedding_dim: 128
+  backbone: "resnet50"  # Options: resnet18, resnet50
+  device: "auto"  # Options: auto, cpu, cuda, mps
+
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
+  margin: 1.0
+  weight_decay: 0.0001
+  save_frequency: 5
+
+data:
+  train_dir: "data/train"
+  val_dir: "data/val"
+  image_size: 160
+  num_workers: 4
+
+inference:
+  default_threshold: 0.7
+  batch_size: 1
+  max_faces_per_image: 10
+
+security:
+  max_file_size: 10485760  # 10MB in bytes
+  allowed_extensions: ["jpg", "jpeg", "png"]
+  rate_limit: 100  # requests per minute
+
+monitoring:
+  enable_metrics: true
+  log_level: "INFO"
+  log_file: "logs/netra.log"

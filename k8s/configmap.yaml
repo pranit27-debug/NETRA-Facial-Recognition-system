@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: netra-config
+data:
+  config.yaml: |
+    app:
+      host: "0.0.0.0"
+      port: 8000
+      workers: 4
+      reload: false
+      debug: false
+
+    model:
+      path: "models/siamese.pth"
+      embedding_dim: 128
+      backbone: "resnet50"
+      device: "auto"
+
+    training:
+      epochs: 100
+      batch_size: 32
+      learning_rate: 0.001
+      margin: 1.0
+      weight_decay: 0.0001
+
+    data:
+      train_dir: "data/train"
+      val_dir: "data/val"
+      image_size: 160
+      num_workers: 4
+
+    inference:
+      default_threshold: 0.7
+      batch_size: 1
+      max_faces_per_image: 10
+
+    security:
+      max_file_size: 10485760
+      allowed_extensions: ["jpg", "jpeg", "png"]
+      rate_limit: 100
+
+    monitoring:
+      enable_metrics: true
+      log_level: "INFO"
+      log_file: "logs/netra.log"
