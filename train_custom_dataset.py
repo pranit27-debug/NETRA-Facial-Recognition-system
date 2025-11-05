@@ -67,16 +67,16 @@ def train_with_custom_dataset():
 def show_dataset_requirements():
     """Show dataset requirements and examples"""
 
-    print("
-📋 Dataset Requirements:"    print("  ✅ Minimum 2 people")
+    print("\n📋 Dataset Requirements:")
+    print("  ✅ Minimum 2 people")
     print("  ✅ 5+ images per person (recommended: 10-20)")
     print("  ✅ 160x160+ pixel images")
     print("  ✅ JPG/PNG format")
     print("  ✅ Clear face photos")
     print("  ✅ Good lighting")
 
-    print("
-📁 Expected Structure:"    print("  my-dataset/")
+    print("\n📁 Expected Structure:")
+    print("  my-dataset/")
     print("  ├── train/          # 80% of images")
     print("  │   ├── alice/")
     print("  │   │   ├── alice_001.jpg")
@@ -98,12 +98,12 @@ if __name__ == "__main__":
     if Path("my_faces").exists():
         train_with_custom_dataset()
     else:
-        print("
-📝 Next Steps:"        print("1. Create your dataset (see DATASET_IMPLEMENTATION_GUIDE.md)")
+        print("\n📝 Next Steps:")
+        print("1. Create your dataset (see DATASET_IMPLEMENTATION_GUIDE.md)")
         print("2. Organize images by person in train/ and val/ directories")
         print("3. Run: python dataset_setup.py --analyze my-dataset")
         print("4. Train: python app/train.py --config configs/config.yaml")
 
-        print("
-📖 For detailed instructions:"        print("  See: DATASET_IMPLEMENTATION_GUIDE.md")
+        print("\n📖 For detailed instructions:")
+        print("  See: DATASET_IMPLEMENTATION_GUIDE.md")
         print("  Run: python dataset_setup.py --help")
