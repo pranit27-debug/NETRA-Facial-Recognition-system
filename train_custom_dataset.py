@@ -42,16 +42,15 @@ def train_with_custom_dataset():
      print(f"📁 Train directory: {config['data']['train_dir']}")
      print(f"📁 Val directory: {config['data']['val_dir']}")
 
-    # Training parameters
-    print("
-🎯 Recommended Training Parameters:"    print(f"  Epochs: {config['training']['epochs']}")
+ # Training parameters
+    print("\n🎯 Recommended Training Parameters:")
+    print(f"  Epochs: {config['training']['epochs']}")
     print(f"  Batch size: {config['training']['batch_size']}")
     print(f"  Learning rate: {config['training']['learning_rate']}")
 
-    print("
-🚀 Training Commands:"    print("  # Start training")
-    print("  python app/train.py --config configs/config_custom.yaml")
-    print("  ")
+    print("\n🚀 Training Commands:")
+    print("  # Start training")
+    print("  python app/train.py --config configs/config_custom.yaml\n")
     print("  # Train with custom parameters")
     print("  python app/train.py \\")
     print("    --config configs/config_custom.yaml \\")
@@ -59,10 +58,11 @@ def train_with_custom_dataset():
     print("    --batch_size 64 \\")
     print("    --learning_rate 0.0005")
 
-    print("
-📊 Expected Results:"    print("  - Training accuracy: 85-95% (depending on dataset quality)")
+    print("\n📊 Expected Results:")
+    print("  - Training accuracy: 85-95% (depending on dataset quality)")
     print("  - Validation accuracy: 80-90%")
-    print("  - Best model saved to: models/siamese_best_acc.pth"
+    print("  - Best model saved to: models/siamese_best_acc.pth")
+
 
 def show_dataset_requirements():
     """Show dataset requirements and examples"""
