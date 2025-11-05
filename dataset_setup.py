@@ -102,18 +102,19 @@ def create_dataset_structure(source_dir, output_dir, train_ratio=0.8):
 
         # Copy images
         for i, img_path in enumerate(train_images):
-            dest_path = person_train_dir / f"{person_name}_{i+1"03d"}.jpg"
+            dest_path = person_train_dir / f"{person_name}_{i+1:03d}.jpg"
             shutil.copy2(img_path, dest_path)
 
         for i, img_path in enumerate(val_images):
-            dest_path = person_val_dir / f"{person_name}_val_{i+1"03d"}.jpg"
+            dest_path = person_val_dir / f"{person_name}_val_{i+1:03d}.jpg"
             shutil.copy2(img_path, dest_path)
 
         total_images += len(valid_images_list)
         print(f"  ✅ {len(train_images)} train, {len(val_images)} val images")
 
-    print("
-📊 Summary:"    print(f"  Total images processed: {total_images}")
+
+    print("\n📊 Summary:")
+    print(f"  Total images processed: {total_images}")
     print(f"  Valid images: {valid_images}")
     print(f"  Train images: {sum(1 for _ in train_dir.rglob('*.jpg'))}")
     print(f"  Val images: {sum(1 for _ in val_dir.rglob('*.jpg'))}")
@@ -187,14 +188,14 @@ def main():
     elif args.source and args.output:
         success = create_dataset_structure(args.source, args.output, args.train_ratio)
         if success:
-            print("
-✅ Dataset setup complete!"            print(f"📁 Your dataset is ready at: {args.output}")
+            print("\n✅ Dataset setup complete!")
+            print(f"📁 Your dataset is ready at: {args.output}")
             print("🚀 You can now train the model with:")
             print(f"   python app/train.py --config configs/config.yaml")
     else:
         parser.print_help()
-        print("
-📖 Examples:"        print("  # Analyze existing dataset")
+        print("\n📖 Examples:")
+        print("  # Analyze existing dataset")
         print("  python dataset_setup.py --analyze my-dataset")
         print("  ")
         print("  # Create new dataset structure")
