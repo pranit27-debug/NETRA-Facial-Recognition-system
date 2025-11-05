@@ -38,11 +38,11 @@ def train_with_custom_dataset():
     with open('configs/config_custom.yaml', 'w') as f:
         yaml.dump(config, f, default_flow_style=False)
 
-     print("✅ Configuration updated for custom dataset")
-     print(f"📁 Train directory: {config['data']['train_dir']}")
-     print(f"📁 Val directory: {config['data']['val_dir']}")
+    print("✅ Configuration updated for custom dataset")
+    print(f"📁 Train directory: {config['data']['train_dir']}")
+    print(f"📁 Val directory: {config['data']['val_dir']}")
 
- # Training parameters
+    # Training parameters
     print("\n🎯 Recommended Training Parameters:")
     print(f"  Epochs: {config['training']['epochs']}")
     print(f"  Batch size: {config['training']['batch_size']}")
@@ -86,6 +86,7 @@ def show_dataset_requirements():
     print("  └── val/           # 20% of images")
     print("      ├── alice/")
     print("      └── bob/")
+
 
 if __name__ == "__main__":
     print("🎓 NETRA Custom Dataset Training Guide")
