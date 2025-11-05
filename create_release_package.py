@@ -285,8 +285,8 @@ kubectl get pods -l app=netra
         print(f"📊 Files included: {files_added}")
         print(f"📏 Size: {zip_path.stat().st_size / 1024 / 1024:.2f} MB")
 
-        print("
-📋 Package contents:"        print("  ├── app/ (8 Python files)")
+        print("📋 Package contents:" )
+        print("  ├── app/ (8 Python files)")
         print("  ├── configs/ (configuration files)")
         print("  ├── k8s/ (5 Kubernetes manifests)")
         print("  ├── monitoring/ (Prometheus & Grafana configs)")
@@ -297,8 +297,8 @@ kubectl get pods -l app=netra
         print("  ├── Makefile (automation)")
         print("  └── PACKAGE_README.md (this file)")
 
-        print("
-🎯 To use the package:"        print(f"  1. Unzip: unzip {zip_filename}")
+        print("🎯 To use the package:" )
+        print(f"  1. Unzip: unzip {zip_filename}")
         print(f"  2. cd {project_name}")
         print("  3. pip install -r requirements.txt")
         print("  4. pip install -e .")
