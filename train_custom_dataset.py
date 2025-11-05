@@ -38,8 +38,9 @@ def train_with_custom_dataset():
     with open('configs/config_custom.yaml', 'w') as f:
         yaml.dump(config, f, default_flow_style=False)
 
-    print("✅ Configuration updated for custom dataset"    print(f"📁 Train directory: {config['data']['train_dir']}")
-    print(f"📁 Val directory: {config['data']['val_dir']}")
+     print("✅ Configuration updated for custom dataset")
+     print(f"📁 Train directory: {config['data']['train_dir']}")
+     print(f"📁 Val directory: {config['data']['val_dir']}")
 
     # Training parameters
     print("
