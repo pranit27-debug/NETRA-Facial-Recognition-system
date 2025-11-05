@@ -112,7 +112,6 @@ def create_dataset_structure(source_dir, output_dir, train_ratio=0.8):
         total_images += len(valid_images_list)
         print(f"  ✅ {len(train_images)} train, {len(val_images)} val images")
 
-
     print("\n📊 Summary:")
     print(f"  Total images processed: {total_images}")
     print(f"  Valid images: {valid_images}")
